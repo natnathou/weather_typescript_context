@@ -12,6 +12,6 @@ export class FormReducer {
   }
 
   private static updateForm(state: State, action: Action) {
-    return { ...state, [state.formValue]: action.payload };
+    return { ...state, formValue: action.payload };
   }
 }

@@ -1,0 +1,13 @@
+.SearchBar{
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+.label{
+    cursor: pointer;
+}
+
+.label>i.location.icon{
+    margin-top: 1px;
+    margin-left: 10px;
+}
