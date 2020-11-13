@@ -2,7 +2,9 @@ import React from 'react';
 import { StateProvider } from './state/StateContext';
 import { stateReducer } from './state/reducer';
 import { initialState } from './state/InitialState';
-import { SearchBar } from './components/SearchBar';
+import { SearchBar } from './components/homePage/SearchBar';
+import { HomeList } from './components/homePage/HomeList';
+
 import './Style/App.css';
 
 export const App = (): JSX.Element => {
@@ -10,6 +12,7 @@ export const App = (): JSX.Element => {
     <StateProvider reducer={stateReducer} initialState={initialState}>
       <div className="App ui container">
         <SearchBar />
+        <HomeList />
       </div>
     </StateProvider>
   );

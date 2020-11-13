@@ -1,7 +1,7 @@
 import React from 'react';
-import { useDispatch, useGlobalContext } from '../state/StateContext';
-import { updateForm } from '../state/Actions';
-import '../Style/SearchBar.css';
+import { useDispatch, useGlobalContext } from '../../state/StateContext';
+import { updateForm } from '../../state/Actions';
+import '../../Style/SearchBar.css';
 
 export const SearchBar = (): JSX.Element => {
   const dispatch = useDispatch();

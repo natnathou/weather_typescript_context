@@ -1,4 +1,4 @@
-import {ContextDevTool} from 'react-context-devtool';
+import { ContextDevTool } from 'react-context-devtool';
 import React, { createContext, Reducer, useContext, useReducer } from 'react';
 import { initialState, State } from './InitialState';
 import { Action } from './Actions';
@@ -26,11 +26,8 @@ export const StateProvider = ({
 
   return (
     <context.Provider value={{ state, dispatch }}>
-      <ContextDevTool
-        context={context}
-        id='Context'
-        displayName='Context'
-    />{children}
+      <ContextDevTool context={context} id="Context" displayName="Context" />
+      {children}
     </context.Provider>
   );
 };
