@@ -1,7 +1,13 @@
+import { WeatherPrediction } from './Actions';
+
+interface DataList {
+  [key: string]: WeatherPrediction[];
+}
+
 export interface State {
   formValue: string;
   cityList: string[];
-  dataList: {};
+  dataList: DataList;
 }
 
 export const initialState: State = {

@@ -10,9 +10,16 @@ export interface City {
   name: string;
   coord: { lat: number; lon: number };
 }
+export interface MainWeather {
+  id: number;
+  main: string;
+  description: string;
+  icon: string;
+}
 export interface WeatherPrediction {
   main: { temp: number };
-  weather: { id: number; main: string; description: string; icon: string };
+  weather: MainWeather[];
+  dt_txt: 'string';
 }
 export interface ResponseApiWeather {
   city: City;
@@ -35,7 +42,6 @@ export const fetchApi = async (
         appid: KEY,
       },
     });
-    console.log(response);
   } catch (e) {
     error = e;
   }

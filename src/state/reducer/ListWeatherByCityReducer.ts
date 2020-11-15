@@ -13,7 +13,6 @@ export class ListWeatherByCityReducer {
 
   private static updateList(state: State, action: Action) {
     let data: ResponseApiWeather = action.payload.response.data;
-    console.log(data);
     return {
       ...state,
       dataList: { ...state.dataList, [data.city.name]: data.list },
