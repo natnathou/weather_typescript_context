@@ -1,6 +1,7 @@
 export * from './UpdateForm';
 export * from './WeatherApiRequest';
 export * from './SearchLocationByCityApi';
+export * from './DisplayList';
 
 export enum ActionTypes {
   FORM = 'FORM',

@@ -7,6 +7,9 @@ export class ListSearchCityReducer {
     switch (action.action) {
       case LocationApiAction.SEARCH_CITY:
         return this.searchCity(state, action);
+
+      case LocationApiAction.DISPLAY_LIST:
+        return this.displayList(state, action);
       default:
         return { ...state };
     }
