@@ -21,7 +21,9 @@ export const HomeList = (): JSX.Element => {
           <div className="content ">
             <div className="header City">{data}</div>
             <div className="right floated content Cards">
-              {dataList[data] ? dataWeather(dataList[data], data) : null}
+              {dataList.data[data]
+                ? dataWeather(dataList.data[data], data)
+                : null}
             </div>
           </div>
         </div>

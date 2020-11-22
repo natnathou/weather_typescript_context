@@ -1,7 +1,7 @@
 import React from 'react';
 import { AxiosResponse } from 'axios';
 import weatherApi from '../../api/weatherApi';
-import { Action, ActionTypes, ApiActions } from './index';
+import { Action, ActionTypes, WeatherApiActions } from './index';
 
 const KEY = '42b469e906820dba9adfe9ffb05fc8a7';
 
@@ -47,8 +47,8 @@ export const fetchApi = async (
   }
 
   return dispatch({
-    type: ActionTypes.API,
-    action: ApiActions.FETCH_API,
+    type: ActionTypes.WEATHER_API,
+    action: WeatherApiActions.FETCH_API,
     payload: { response, error },
   });
 };

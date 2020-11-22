@@ -1,20 +1,26 @@
 export * from './UpdateForm';
-export * from './ApiRequest';
+export * from './WeatherApiRequest';
+export * from './SearchLocationByCityApi';
 
 export enum ActionTypes {
   FORM = 'FORM',
-  API = 'API',
+  WEATHER_API = 'WEATHER_API',
+  LOCATION_API = 'LOCATION_API',
 }
 
 export enum FormActions {
   UPDATE_FORM = 'UPDATE_FORM',
 }
 
-export enum ApiActions {
+export enum WeatherApiActions {
   FETCH_API = 'FETCH_API',
 }
 
-type MainAction = FormActions | ApiActions;
+export enum LocationApiAction {
+  SEARCH_CITY = 'SEARCH_CITY',
+}
+
+type MainAction = FormActions | WeatherApiActions | LocationApiAction;
 
 export interface Action {
   type: ActionTypes;

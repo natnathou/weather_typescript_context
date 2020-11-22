@@ -1,13 +1,17 @@
 import React from 'react';
 import { useDispatch, useGlobalContext } from '../../state/StateContext';
-import { updateForm } from '../../state/Actions';
+import { updateForm, searchLocationByCityApi } from '../../state/Actions';
 import '../../Style/SearchBar.css';
 
 export const SearchBar = (): JSX.Element => {
   const dispatch = useDispatch();
   const state = useGlobalContext();
-  const handle_click = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handle_change = (event: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(updateForm(event.target.value));
+    setTimeout(
+      () => searchLocationByCityApi(event.target.value, dispatch),
+      2000,
+    );
   };
   return (
     <div className="SearchBar">
@@ -19,7 +23,7 @@ export const SearchBar = (): JSX.Element => {
           type="text"
           placeholder="Enter a city..."
           value={state.formValue}
-          onChange={handle_click}
+          onChange={handle_change}
         />
         <i className="circular search link icon" />
       </div>
