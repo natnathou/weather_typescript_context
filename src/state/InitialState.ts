@@ -10,7 +10,7 @@ export interface State {
   dataList: { data: DataList; error: any };
   searchCityList: {
     display: boolean;
-    list: { data: ResponseLocation[]; error: any };
+    list: { data: ResponseLocation; error: any };
   };
 }
 
@@ -18,5 +18,5 @@ export const initialState: State = {
   formValue: '',
   cityList: ['Tel Aviv', 'Paris', 'London', 'New York'],
   dataList: { data: {}, error: false },
-  searchCityList: { display: false, list: { data: [], error: false } },
+  searchCityList: { display: false, list: { data: {results:[]}, error: false } },
 };

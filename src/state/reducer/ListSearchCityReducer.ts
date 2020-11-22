@@ -1,5 +1,6 @@
 import { State } from '../InitialState';
 import { Action, LocationApiAction, ResponseLocation } from '../Actions';
+import { AxiosResponse } from 'axios';
 
 export class ListSearchCityReducer {
   static reduce(state: State, action: Action) {
@@ -12,7 +13,7 @@ export class ListSearchCityReducer {
   }
   private static searchCity(state: State, action: Action) {
     if (action.payload.response) {
-      let results: ResponseLocation[] = action.payload.response.data;
+      let results: AxiosResponse<ResponseLocation> = action.payload.response;
 
       return {
         ...state,
@@ -20,7 +21,7 @@ export class ListSearchCityReducer {
           ...state.searchCityList,
           list: {
             ...state.searchCityList.list,
-            data: results,
+            data: results.data,
             error: action.payload.error,
           },
           display: true,
@@ -31,10 +32,22 @@ export class ListSearchCityReducer {
         ...state,
         searchCityList: {
           ...state.searchCityList,
-          list: { data: [], error: action.payload.error },
+          list: { data: { results: [] }, error: action.payload.error },
           display: false,
         },
       };
     }
+  }
+
+  private static displayList(state: State, action: Action) {
+    let display: boolean = action.payload;
+
+    return {
+      ...state,
+      searchCityList: {
+        ...state.searchCityList,
+        display: display,
+      },
+    };
   }
 }

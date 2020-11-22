@@ -1,0 +1,8 @@
+.ResultSearch {
+  margin-left: 60px !important;
+  margin-right: 60px !important;
+}
+
+.ResultSearch > div {
+  cursor: pointer;
+}

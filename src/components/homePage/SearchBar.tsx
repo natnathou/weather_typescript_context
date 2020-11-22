@@ -1,4 +1,5 @@
 import React from 'react';
+import {ResultSearch} from "./ResultSearch"
 import { useDispatch, useGlobalContext } from '../../state/StateContext';
 import { updateForm, searchLocationByCityApi } from '../../state/Actions';
 import '../../Style/SearchBar.css';
@@ -27,6 +28,7 @@ export const SearchBar = (): JSX.Element => {
         />
         <i className="circular search link icon" />
       </div>
+      <ResultSearch/>
     </div>
   );
 };

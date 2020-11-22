@@ -18,6 +18,7 @@ export enum WeatherApiActions {
 
 export enum LocationApiAction {
   SEARCH_CITY = 'SEARCH_CITY',
+  DISPLAY_LIST = 'DISPLAY_LIST',
 }
 
 type MainAction = FormActions | WeatherApiActions | LocationApiAction;
