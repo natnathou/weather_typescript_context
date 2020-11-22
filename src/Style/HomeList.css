@@ -1,25 +1,26 @@
-.Cards{
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
+.Cards {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
 }
 
-.Cards .ui.card{
-    margin-top: -20px;
-    margin-left: 5px;
-    margin-right: 5px;
-    width: 120px;
-    height: 160px;
-    cursor: pointer;
+.Cards .ui.card {
+  margin-top: -20px;
+  margin-left: 5px;
+  margin-right: 5px;
+  width: 120px;
+  height: 160px;
 }
 
-.item .content .header.City{
-    margin-top: 10px;
+.City {
+  cursor: pointer;
+}
 
+.item .content .header.City {
+  margin-top: 10px;
 }
 
 .HomeList {
-    width: 750px;
-    margin: 100px auto auto;
-
+  width: 750px;
+  margin: 100px auto auto;
 }

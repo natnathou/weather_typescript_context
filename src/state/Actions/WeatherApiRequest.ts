@@ -28,7 +28,7 @@ export interface ResponseApiWeather {
 
 export const fetchApi = async (
   city: string,
-  dispatch: React.Dispatch<Action>,
+  dispatch: React.Dispatch<Action>
 ) => {
   let response: AxiosResponse<ResponseApiWeather> | boolean = false;
 
@@ -42,6 +42,7 @@ export const fetchApi = async (
         appid: KEY,
       },
     });
+    console.log(response);
   } catch (e) {
     error = e;
   }
@@ -49,6 +50,36 @@ export const fetchApi = async (
   return dispatch({
     type: ActionTypes.WEATHER_API,
     action: WeatherApiActions.FETCH_API,
+    payload: { response, error },
+  });
+};
+
+export const getWeatherByCoord = async (
+  lat: number,
+  lng: number,
+  dispatch: React.Dispatch<Action>
+) => {
+  let response: AxiosResponse<ResponseApiWeather> | boolean = false;
+  let error: any = null;
+
+  try {
+    response = await weatherApi.get<ResponseApiWeather>(
+      `/forecast?lat=${lat}&lon=${lng}`,
+      {
+        params: {
+          units: 'metric',
+          appid: KEY,
+        },
+      }
+    );
+    console.log(response);
+  } catch (e) {
+    error = e;
+  }
+
+  return dispatch({
+    type: ActionTypes.WEATHER_API,
+    action: WeatherApiActions.GET_WEATHER_BY_COORD,
     payload: { response, error },
   });
 };

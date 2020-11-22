@@ -1,5 +1,9 @@
 import React from 'react';
-import { displayList } from '../../state/Actions';
+import {
+  displayList,
+  displayModal,
+  getWeatherByCoord,
+} from '../../state/Actions';
 import { useDispatch, useGlobalContext } from '../../state/StateContext';
 import '../../Style/ResultSearch.css';
 
@@ -8,8 +12,17 @@ export const ResultSearch = (): JSX.Element => {
 
   const dispatch = useDispatch();
 
-  const handle_click = (event: React.MouseEvent<HTMLDivElement>) => {
+  const handle_click = async (event: React.MouseEvent<HTMLDivElement>) => {
+    const lat = parseFloat(
+      event.currentTarget.getAttribute('lat-coord') as string
+    );
+    const lng = parseFloat(
+      event.currentTarget.getAttribute('lng-coord') as string
+    );
+
+    await getWeatherByCoord(lat, lng, dispatch);
     dispatch(displayList(false));
+    dispatch(displayModal(true));
   };
 
   const listResult = () => {

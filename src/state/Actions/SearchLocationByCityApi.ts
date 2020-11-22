@@ -31,16 +31,15 @@ export interface SearchLocationByCityApi {
 }
 export const searchLocationByCityApi = async (
   dataInput: string,
-  dispatch: React.Dispatch<Action>,
+  dispatch: React.Dispatch<Action>
 ) => {
   let response: AxiosResponse<ResponseLocation> | boolean = false;
   let error: any;
 
   try {
     response = await searchCityApi.get<ResponseLocation>(
-      `json?q=${dataInput}&key=${KEY}`,
+      `json?q=${dataInput}&key=${KEY}`
     );
-    console.log(response.data.results);
   } catch (e) {
     error = e;
   }

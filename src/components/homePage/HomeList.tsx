@@ -1,5 +1,11 @@
 import React, { useEffect } from 'react';
-import { fetchApi, WeatherPrediction } from '../../state/Actions';
+import {
+  City,
+  displayModal,
+  fetchApi,
+  getWeatherByCoord,
+  WeatherPrediction,
+} from '../../state/Actions';
 import { useDispatch, useGlobalContext } from '../../state/StateContext';
 import { exportDayFromDate } from '../../tools/tools';
 import '../../Style/HomeList.css';
@@ -14,15 +20,38 @@ export const HomeList = (): JSX.Element => {
     });
   }, [cityList, dispatch]);
 
+  const handleClick = async (event: React.MouseEvent<HTMLDivElement>) => {
+    const lat = parseFloat(
+      event.currentTarget.getAttribute('lat-coord') as string
+    );
+    const lng = parseFloat(
+      event.currentTarget.getAttribute('lng-coord') as string
+    );
+
+    await getWeatherByCoord(lat, lng, dispatch);
+    dispatch(displayModal(true));
+  };
+
   const completeLine = () => {
     return cityList.map((data, index) => {
       return (
-        <div key={index} className="item">
-          <div className="content ">
-            <div className="header City">{data}</div>
-            <div className="right floated content Cards">
+        <div key={index} className='item'>
+          <div className='content '>
+            <div
+              className='header City'
+              lat-coord={
+                dataList.data[data] ? dataList.data[data].city.coord.lat : null
+              }
+              lng-coord={
+                dataList.data[data] ? dataList.data[data].city.coord.lon : null
+              }
+              onClick={handleClick}
+            >
+              {data}
+            </div>
+            <div className='right floated content Cards'>
               {dataList.data[data]
-                ? dataWeather(dataList.data[data], data)
+                ? dataWeather(dataList.data[data].prediction, data)
                 : null}
             </div>
           </div>
@@ -30,30 +59,30 @@ export const HomeList = (): JSX.Element => {
       );
     });
   };
-  const dataWeather = (data: WeatherPrediction[], city: string) => {
-    return data.map((info, index) => {
+  const dataWeather = (datas: WeatherPrediction[], city: string) => {
+    return datas.map((info, index) => {
       if (
-        data[index + 1] &&
-        exportDayFromDate(data[index].dt_txt) !==
-          exportDayFromDate(data[index + 1].dt_txt)
+        datas[index + 1] &&
+        exportDayFromDate(datas[index].dt_txt) !==
+          exportDayFromDate(datas[index + 1].dt_txt)
       ) {
         return (
-          <div className="ui card" key={index}>
+          <div className='ui card' key={index}>
             <div
-              className="image"
+              className='image'
               style={{ width: `50px`, backgroundColor: `#fff` }}
             >
               <img
-                alt="icon"
+                alt='icon'
                 src={`http://openweathermap.org/img/w/${info.weather[0].icon}.png`}
               />
             </div>
-            <div className="content">
-              <a className="header">{exportDayFromDate(info.dt_txt)}</a>
-              <div className="meta">
-                <span className="date">{Math.round(info.main.temp)} °C</span>
+            <div className='content'>
+              <div className='header'>{exportDayFromDate(info.dt_txt)}</div>
+              <div className='meta'>
+                <span className='date'>{Math.round(info.main.temp)} °C</span>
               </div>
-              <div className="description">{info.weather[0].description}</div>
+              <div className='description'>{info.weather[0].description}</div>
             </div>
           </div>
         );
@@ -63,8 +92,8 @@ export const HomeList = (): JSX.Element => {
     });
   };
   return (
-    <div className="HomeList">
-      <div className="ui divided list">{completeLine()}</div>
+    <div className='HomeList'>
+      <div className='ui divided list'>{completeLine()}</div>
     </div>
   );
 };

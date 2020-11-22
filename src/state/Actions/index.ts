@@ -2,6 +2,7 @@ export * from './UpdateForm';
 export * from './WeatherApiRequest';
 export * from './SearchLocationByCityApi';
 export * from './DisplayList';
+export * from './DisplayModal';
 
 export enum ActionTypes {
   FORM = 'FORM',
@@ -15,6 +16,8 @@ export enum FormActions {
 
 export enum WeatherApiActions {
   FETCH_API = 'FETCH_API',
+  GET_WEATHER_BY_COORD = 'GET_WEATHER_BY_COORD',
+  DISPLAY_MODAL = 'DISPLAY_MODAL',
 }
 
 export enum LocationApiAction {

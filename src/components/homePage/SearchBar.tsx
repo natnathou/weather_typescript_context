@@ -1,7 +1,11 @@
 import React from 'react';
-import {ResultSearch} from "./ResultSearch"
+import { ResultSearch } from './ResultSearch';
 import { useDispatch, useGlobalContext } from '../../state/StateContext';
-import { updateForm, searchLocationByCityApi } from '../../state/Actions';
+import {
+  updateForm,
+  searchLocationByCityApi,
+  displayList,
+} from '../../state/Actions';
 import '../../Style/SearchBar.css';
 
 export const SearchBar = (): JSX.Element => {
@@ -11,24 +15,29 @@ export const SearchBar = (): JSX.Element => {
     dispatch(updateForm(event.target.value));
     setTimeout(
       () => searchLocationByCityApi(event.target.value, dispatch),
-      2000,
+      500
     );
   };
   return (
-    <div className="SearchBar">
-      <div className="ui fluid labeled icon input">
-        <div className="ui label">
-          <i className="location arrow icon" />
+    <div className='SearchBar'>
+      <div className='ui fluid labeled icon input'>
+        <div className='ui label'>
+          <i className='location arrow icon' />
         </div>
         <input
-          type="text"
-          placeholder="Enter a city..."
+          type='text'
+          placeholder='Enter a city...'
           value={state.formValue}
           onChange={handle_change}
         />
-        <i className="circular search link icon" />
+        <i
+          className='circular search link icon'
+          onClick={() => {
+            dispatch(displayList(true));
+          }}
+        />
       </div>
-      <ResultSearch/>
+      <ResultSearch />
     </div>
   );
 };
