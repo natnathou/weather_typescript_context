@@ -1,6 +1,12 @@
-import { Action, ActionTypes, WeatherApiActions } from '.';
+import { ActionTypes, WeatherApiActions } from '.';
 
-export const updateCityName = (name: string): Action => {
+export interface UpdateCityNameAction {
+  type: ActionTypes.WEATHER_API;
+  action: WeatherApiActions.UPDATE_CITY_NAME;
+  payload: string;
+}
+
+export const updateCityName = (name: string): UpdateCityNameAction => {
   return {
     type: ActionTypes.WEATHER_API,
     action: WeatherApiActions.UPDATE_CITY_NAME,

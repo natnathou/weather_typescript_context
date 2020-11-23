@@ -26,7 +26,15 @@ export interface ResponseApiWeather {
   list: WeatherPrediction[];
 }
 
-export const fetchApi = async (
+export interface GetWeatherByNameAction {
+  type: ActionTypes.WEATHER_API;
+  action: WeatherApiActions.FETCH_API;
+  payload: {
+    response: AxiosResponse<ResponseApiWeather> | boolean;
+    error: any;
+  };
+}
+export const getWeatherByNameAction = async (
   city: string,
   dispatch: React.Dispatch<Action>
 ) => {
@@ -52,6 +60,15 @@ export const fetchApi = async (
     payload: { response, error },
   });
 };
+
+export interface GetWeatherByCoordAction {
+  type: ActionTypes.WEATHER_API;
+  action: WeatherApiActions.GET_WEATHER_BY_COORD;
+  payload: {
+    response: AxiosResponse<ResponseApiWeather> | boolean;
+    error: any;
+  };
+}
 
 export const getWeatherByCoord = async (
   lat: number,

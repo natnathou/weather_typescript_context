@@ -16,7 +16,7 @@ export interface ResponseLocation {
   results: Results[];
 }
 
-export interface SearchLocationByCityApi {
+export interface SearchLocationByCityApiAction {
   type: ActionTypes.LOCATION_API;
   action: LocationApiAction.SEARCH_CITY;
   payload: {
@@ -24,6 +24,7 @@ export interface SearchLocationByCityApi {
     error: boolean;
   };
 }
+
 export const searchLocationByCityApi = async (
   dataInput: string,
   dispatch: React.Dispatch<Action>

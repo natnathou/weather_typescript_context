@@ -1,3 +1,12 @@
+import { DisplayListAction } from './DisplayList';
+import { SearchLocationByCityApiAction } from './SearchLocationByCityApi';
+import { UpdateCityNameAction } from './UpdateCityName';
+import { UpdateFormAction } from './UpdateForm';
+import {
+  GetWeatherByCoordAction,
+  GetWeatherByNameAction,
+} from './WeatherApiRequest';
+
 export * from './UpdateForm';
 export * from './WeatherApiRequest';
 export * from './SearchLocationByCityApi';
@@ -29,8 +38,17 @@ export enum LocationApiAction {
 
 type MainAction = FormActions | WeatherApiActions | LocationApiAction;
 
-export interface Action {
+interface Actions {
   type: ActionTypes;
   action: MainAction;
   payload?: any;
 }
+
+export type Action =
+  | Actions
+  | DisplayListAction
+  | SearchLocationByCityApiAction
+  | UpdateCityNameAction
+  | UpdateFormAction
+  | GetWeatherByNameAction
+  | GetWeatherByCoordAction;

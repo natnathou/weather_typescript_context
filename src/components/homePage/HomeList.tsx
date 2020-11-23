@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import {
   displayModal,
-  fetchApi,
+  getWeatherByNameAction,
   getWeatherByCoord,
   WeatherPrediction,
 } from '../../state/Actions';
@@ -15,7 +15,7 @@ export const HomeList = (): JSX.Element => {
 
   useEffect(() => {
     cityList.forEach((data) => {
-      fetchApi(data, dispatch).then();
+      getWeatherByNameAction(data, dispatch).then();
     });
   }, [cityList, dispatch]);
 
