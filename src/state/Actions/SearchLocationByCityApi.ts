@@ -1,11 +1,6 @@
 import searchCityApi from '../../api/cityLocationApi';
 import React from 'react';
-import {
-  Action,
-  ActionTypes,
-  LocationApiAction,
-  ResponseApiWeather,
-} from './index';
+import { Action, ActionTypes, LocationApiAction } from './index';
 import { AxiosResponse } from 'axios';
 
 const KEY = '7f6a5ec12c9d4d3e8ef9cecc1f3aa1a2';

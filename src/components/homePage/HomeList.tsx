@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import {
-  City,
   displayModal,
   fetchApi,
   getWeatherByCoord,

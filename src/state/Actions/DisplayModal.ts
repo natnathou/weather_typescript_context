@@ -1,4 +1,4 @@
-import { Action, ActionTypes, LocationApiAction, WeatherApiActions } from '.';
+import { Action, ActionTypes, WeatherApiActions } from '.';
 
 export const displayModal = (display: boolean): Action => {
   return {

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { ResultSearch } from './ResultSearch';
 import { useDispatch, useGlobalContext } from '../../state/StateContext';
 import {
