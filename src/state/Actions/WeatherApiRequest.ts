@@ -42,7 +42,6 @@ export const fetchApi = async (
         appid: KEY,
       },
     });
-    console.log(response);
   } catch (e) {
     error = e;
   }
