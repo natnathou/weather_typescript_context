@@ -71,7 +71,6 @@ export const getWeatherByCoord = async (
         },
       }
     );
-    console.log(response);
   } catch (e) {
     error = e;
   }

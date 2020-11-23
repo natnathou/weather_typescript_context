@@ -61,11 +61,8 @@ export const HomeList = (): JSX.Element => {
   };
   const dataWeather = (datas: WeatherPrediction[], city: string) => {
     return datas.map((info, index) => {
-      if (
-        datas[index + 1] &&
-        exportDayFromDate(datas[index].dt_txt) !==
-          exportDayFromDate(datas[index + 1].dt_txt)
-      ) {
+      let date = new Date(datas[index].dt_txt);
+      if (date.getHours() === 12) {
         return (
           <div className='ui card' key={index}>
             <div

@@ -3,6 +3,7 @@ import {
   displayList,
   displayModal,
   getWeatherByCoord,
+  updateCityName,
 } from '../../state/Actions';
 import { useDispatch, useGlobalContext } from '../../state/StateContext';
 import '../../Style/ResultSearch.css';
@@ -21,6 +22,8 @@ export const ResultSearch = (): JSX.Element => {
     );
 
     await getWeatherByCoord(lat, lng, dispatch);
+    let target = event.target as Element;
+    dispatch(updateCityName(target.innerHTML));
     dispatch(displayList(false));
     dispatch(displayModal(true));
   };

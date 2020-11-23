@@ -10,6 +10,8 @@ export class WeatherReducer {
         return this.displayCityDetails(state, action);
       case WeatherApiActions.DISPLAY_MODAL:
         return this.displayModal(state, action);
+      case WeatherApiActions.UPDATE_CITY_NAME:
+        return this.updateCityName(state, action);
       default:
         return { ...state };
     }
@@ -47,6 +49,11 @@ export class WeatherReducer {
         ...state,
         cityDetails: {
           ...state.cityDetails,
+          details: {
+            id: data.city.id,
+            name: data.city.name,
+            coord: data.city.coord,
+          },
           data: data.list,
           error: false,
         },
@@ -68,6 +75,17 @@ export class WeatherReducer {
     return {
       ...state,
       cityDetails: { ...state.cityDetails, display: display },
+    };
+  }
+
+  private static updateCityName(state: State, action: Action) {
+    let name: string = action.payload;
+    return {
+      ...state,
+      cityDetails: {
+        ...state.cityDetails,
+        details: { ...state.cityDetails.details, name: name },
+      },
     };
   }
 }

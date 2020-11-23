@@ -1,0 +1,4 @@
+.modal div.content.HorizontalList {
+  display: flex;
+  justify-content: space-between;
+}

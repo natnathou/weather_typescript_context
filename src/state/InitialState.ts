@@ -12,7 +12,12 @@ export interface State {
     display: boolean;
     list: { data: ResponseLocation; error: any };
   };
-  cityDetails: { data: WeatherPrediction[]; error: any; display: boolean };
+  cityDetails: {
+    data: WeatherPrediction[];
+    details: City;
+    error: any;
+    display: boolean;
+  };
 }
 
 export const initialState: State = {
@@ -26,5 +31,10 @@ export const initialState: State = {
     display: false,
     list: { data: { results: [] }, error: false },
   },
-  cityDetails: { data: [], error: false, display: false },
+  cityDetails: {
+    data: [],
+    details: { id: 0, name: '', coord: { lat: 0, lon: 0 } },
+    error: false,
+    display: false,
+  },
 };
